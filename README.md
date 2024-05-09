@@ -1,41 +1,43 @@
 # Postable
 
-Este proyecto presenta una API RESTful que simula una red social, permitiendo a los usuarios interactuar con publicaciones (Posts). La API maneja diferentes operaciones basadas en la autenticación del usuario.
+This project presents a RESTful API that simulates a social network, allowing users to interact with posts. The API handles various operations based on user authentication.
 
-## Tabla de Contenidos
+## Table of Contents
 
-1. [Requisitos](#requisitos)
-2. [Instalación](#instalación)
-3. [Configuración](#configuración)
+1. [Requirements](#requirements)
+2. [Installation](#installation)
+3. [Configuration](#configuration)
 4. [Endpoints](#endpoints)
-5. [Ejemplos de Solicitudes](#ejemplos-de-solicitudes)
-6. [Autenticación](#Autenticación)
+5. [Request Examples](#request-examples)
+6. [Authentication](#authentication)
 
 
-## Requisitos
+## Requirements
 
-Es necesario tener Node.js, npm, y PostgreSQL instalados en tu entorno de desarrollo.
+You need to have Node.js, npm, and PostgreSQL installed in your development environment.
 
-## Instalación
+## Installation
 
-1. Clona este repositorio:
+1. Clone this repository:
 
 ```bash
 git clone git@github.com:AYolimaArias/Postable-Backend.git
 cd Postable-Backend
 ```
 
-2. Instala las dependencias:
+2. Install dependencies:
 
 ```bash
 npm install
 ```
 
-3. Configura la conexión a la base de datos en el archivo .env, se muestra un ejemplo en el archivo .env.example .
-4. Ejecuta un reset de las migraciones con umzug:
+3. Configure the database connection in the .env file, an example is provided in the .env.example file.
 
+4. Migrate the database:
+   
 ```bash
 npm run db:reset
+npm run db:seed
 ```
 
 5. Inicia el servidor:
@@ -44,16 +46,16 @@ npm run db:reset
 npm run dev
 ```
 
-## Configuración
+## Configuration
 
-Para configurar correctamente tu entorno de desarrollo, necesitarás crear un archivo `.env` en la raíz del proyecto y establecer las siguientes variables de entorno.
+To properly configure your development environment, you'll need to create a .env file in the root of the project and set the following environment variables.
 
-En el archivo .env.example, proporciona una plantilla para que los usuarios puedan copiarla y configurar las variables según sus necesidades, quedando similiar al siguiente ejemplo:.
+The .env.example file provides a template for users to copy and configure the variables according to their needs, similar to the following example:
 
 ```plaintext
-# Contenido del archivo .env
+# File .env content
 
-# Configuración de la base de datos PostgreSQL
+# PostgreSQL database configuraton
 DB_HOST=localhost
 DB_NAME=mi_base_de_datos
 DB_PORT=5432
@@ -61,29 +63,29 @@ DB_USER=mi_usuario
 DB_PASSWORD=mi_contraseña
 DB_ADMIN_DATABASE=mi_database_admin
 
-# Configuración del token JWT
+# Token JWT configuraton
 JWT_SECRET=mi_secreto
 COST_FACTOR=10
 ```
 
-Asegúrate de proporcionar valores específicos para cada variable según los requisitos de tu aplicación.
+Make sure to provide specific values for each variable according to your application's requirements.
 
-### Migración de base de datos de ejemplo:
+### Example Database Migration:
 
-puedes migrar directamente la base de datos de ejemplo con los siguiente comandos :
+You can directly migrate the example database using the following commands:
 
-- Crear base de datos:
+- Create database:
   
 ```bash
 npm run db:create 
 ```
-- Crear tablas:
+- Create tables:
 
 ```bash
 npm run db:migrate up
 ```
-- Migrar información de las tablas users y posts:
-  
+- Migrate information from users and :
+
 ```bash
 npm run db:seed
 ```
