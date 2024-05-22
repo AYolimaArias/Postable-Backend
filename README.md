@@ -89,71 +89,70 @@ npm run db:migrate up
 ```bash
 npm run db:seed
 ```
-- Borrar y volver a crear base de datos y tablas con un solo comando:
+- Drop and create again the data base with tables:
 
 ```bash
 npm run db:reset
 ```
 
-## Estructura del proyecto
+## Project structure
 
-La aplicación sigue una arquitectura de tres capas:
+This app contains a tree layer structure:
 
-- **Routers:** Define las rutas y maneja las solicitudes HTTP.
-- **Servicios:** Contiene la lógica de negocio y se comunica con la capa de acceso a datos.
-- **Acceso a Datos:** Gestiona las interacciones con la base de datos PostgreSQL utilizando pg.
+- **Routers:** Define routers and manage the HTTP requests.
+- **Servicios:** Contains business logic and communicates with the data access layer.
+- **Acceso a Datos:** Manages interactions with the PostgreSQL database using pg.
 
 ## Endpoints
 
-### Visualización de Posts
+### Posts
 
-#### GET / (Ver Todos los Posts con Paginación y Filtros)
+#### GET / (view all Posts with pagination and filters)
 
-- **Descripción**: Retorna una lista paginada de posts con opciones de filtrado y ordenación.
-- **Parámetros Query**: Permite paginación, filtrado por usuario, y ordenación por fecha o likes.
+- **Description**: Return a paginated list with filter and sorting options.
+- **Query parameters**:  Allow pagination, filtering by user and sorting by date or likes
 
-#### GET /:username (Ver Posts de Usuario Específico)
+#### GET /:username (view the specific user Posts )
 
-- **Descripción**: Muestra los posts de un usuario específico con paginación y ordenación.
-- **Parámetros**: `username` - Usuario a consultar.
-- **Parámetros Query**: Permite paginación y ordenación por fecha o likes.
+- **Description**: Show the user posts with pagination and sorting.
+- **Parameters**: `username` - user for query
+- **Query parameters**: Allow pagination, filtering by user and sorting by date or likes
 
-### Interacción de Usuarios Registrados
 
-#### POST /posts (Crear Nuevo Post)
+#### POST /posts (Create new post)
 
-- **Descripción**: Permite a un usuario registrado crear un nuevo post.
-- **Body**: `content` - Texto del post.
-- **Respuesta**: Crea un nuevo post y devuelve la información del post creado.
+- **Description**: Allow a new user registered to create a new post.
+- **Body**: `content` - Post text.
+- **Response**: Create a new post and return the post information.
 
-#### PATCH /posts/:id (Editar Post Existente)
+#### PATCH /posts/:id (Edit post)
 
-- **Descripción**: Permite a un usuario registrado editar un post existente.
-- **Parámetros URL**: `id` - ID del post a editar.
-- **Body**: `content` - Texto actualizado del post (opcional).
-- **Respuesta**: Actualiza el post y devuelve la información actualizada.
+- **Description**:  Allow a new user registered to edit a new post.
+- **URL parameters**: `id` - Post ID.
+- **Body**: `content` - Post text to update. (optional)
+- **Response**:Update the post and return the upated information .
 
-#### POST /posts/:postId/like (Dar Like a un Post)
+#### POST /posts/:postId/like (Give Like to Post)
 
-- **Descripción**: Permite a un usuario registrado dar "Like" a un post.
-- **Parámetros**: `postId` - ID del post a dar like.
-- **Respuesta**: Registra un "Like" al post y devuelve la información actualizada del post.
+- **Description**:Allow a new user registered to give "Like" to a post.
+- **Parameters**: `postId` -Post ID 
+- **Response**:Register a Like to the post anda return the updated post information. 
 
-#### DELETE /posts/:postId/like (Eliminar Like de un Post)
+#### DELETE /posts/:postId/like (Remove Like )
 
-- **Descripción**: Permite a un usuario eliminar su "Like" de un post.
-- **Parámetros**: `postId` - ID del post a remover like.
-- **Respuesta**: Elimina el "Like" del post y devuelve la información actualizada del post.
+- **Description**: Allow the user to remove their like from the post.
+- **Parameters**: `postId` - Post ID
+- **RespONSE**: Remove the  "Like" from the post and return the updated post information.
 
-### Registro y Autenticación de Usuarios
+### Signup and Authetication
 
-#### POST /signup (Crear Cuenta)
+#### POST /signup (Create account)
 
-- **Descripción**: Permite a un nuevo usuario registrarse en la plataforma.
-- **Body**: `username`, `password` - Campos requeridos para el registro.
-- **Respuesta**: Crea una nueva cuenta y devuelve la información del usuario registrado.
+- **Description**: Allow the signup of a new user
+- **Body**: `username`, `password` -  Required fields to signup
+- **Response**:  Create a new account and return the user information.
 
-#### POST /login (Iniciar Sesión)
+#### POST /login (Login)
 
 - **Descripción**: Permite a un usuario existente iniciar sesión.
 - **Body**: `username`, `password` - Credenciales requeridas para el inicio de sesión.
